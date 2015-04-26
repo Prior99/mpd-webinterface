@@ -54,6 +54,9 @@
 		case "next":
 			echo(json_encode($mpd->next()));
 			break;
+		case "status":
+			echo(json_encode($mpd->status()));
+			break;
 		case "upload":
 			upload();
 			$mpd->update();

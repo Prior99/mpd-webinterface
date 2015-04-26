@@ -18,7 +18,47 @@
 		}
 
 		public function status() {
-			return $this->send("status");
+			$result = array();
+			$input = $this->send("status");
+			$array = explode("\n", $input);
+			foreach($array as $line) {
+				$kv = explode(":", $line);
+				$key = trim($kv[0]);
+				switch($key) {
+					case "volume":
+						$result["volume"] = trim($kv[1]);
+						break;
+					case "repeat":
+						$result["repeat"] = (trim($kv[1]) == 1);
+						break;
+					case "random":
+						$result["random"] = (trim($kv[1]) == 1);
+						break;
+					case "single":
+						$result["single"] = (trim($kv[1]) == 1);
+						break;
+					case "consume":
+						$result["consume"] = (trim($kv[1]) == 1);
+						break;
+					case "playlistlength":
+						$result["playlistlength"] = trim($kv[1]);
+						break;
+					case "state":
+						$result["state"] = trim($kv[1]);
+						break;
+					case "song":
+						$result["song"] = intval(trim($kv[1]));
+						break;
+					case "time":
+						$result["elapsed"] = intval(trim($kv[1]));
+						$result["length"] = intval(trim($kv[2]));
+						break;
+					case "bitrate":
+						$result["bitrate"] = intval(trim($kv[1]));
+						break;
+				}
+			}
+			return $result;
 		}
 
 		public function pause() {
