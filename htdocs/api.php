@@ -1,7 +1,7 @@
 <?php
 	require_once('getid3/getid3.php');
 	require_once("src/mpd.php");
-	
+
 	function upload() {
 		$files = $_FILES["upload"];
 		$array = Array();
@@ -44,6 +44,15 @@
 			break;
 		case "add":
 			echo(json_encode($mpd->add($_GET["song"])));
+			break;
+		case "pause":
+			echo(json_encode($mpd->pause()));
+			break;
+		case "play":
+			echo(json_encode($mpd->play()));
+			break;
+		case "next":
+			echo(json_encode($mpd->next()));
 			break;
 		case "upload":
 			upload();

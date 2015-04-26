@@ -18,11 +18,23 @@
 		}
 
 		public function status() {
-			print_r($this->send("status"));
+			return $this->send("status");
+		}
+
+		public function pause() {
+			return trim($this->send("pause")) === "OK";
+		}
+
+		public function play() {
+			return trim($this->send("play")) === "OK";
+		}
+
+		public function next() {
+			return trim($this->send("next")) === "OK";
 		}
 
 		public function update() {
-			$this->send("update");
+			return trim($this->send("update")) === "OK";
 		}
 
 		public function listall() {

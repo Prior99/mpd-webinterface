@@ -34,7 +34,7 @@
 				</div>
 				<div id="navbar" class="collapse navbar-collapse">
 					<ul class="nav navbar-nav">
-						<li><a href="?action=home">Home</a></li>
+						<li><a href="?action=home">Status</a></li>
 						<li><a href="?action=songs">Songs</a></li>
 						<li><a href="?action=playlist">Playlist</a></li>
 						<li><a href="?action=upload">Upload</a></li>
