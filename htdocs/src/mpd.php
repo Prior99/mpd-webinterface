@@ -21,6 +21,10 @@
 			print_r($this->send("status"));
 		}
 
+		public function update() {
+			$this->send("update");
+		}
+
 		public function listall() {
 			$result = $this->send("listall");
 			$result = str_replace("file: ", "", $result);

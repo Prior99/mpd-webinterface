@@ -37,6 +37,7 @@
 						<li><a href="?action=home">Home</a></li>
 						<li><a href="?action=songs">Songs</a></li>
 						<li><a href="?action=playlist">Playlist</a></li>
+						<li><a href="?action=upload">Upload</a></li>
 					</ul>
 				</div>
 			</div>
@@ -51,6 +52,9 @@
 							break;
 						case "playlist":
 							require_once("view/playlist.php");
+							break;
+						case "upload":
+							require_once("view/upload.php");
 							break;
 						case "home":
 						default:

@@ -2,4 +2,5 @@
 	$config = array();
 	$config["port"] = 7701;
 	$config["host"] = "localhost";
+	$config["music"] = "/home/music/music";
 ?>
