@@ -44,19 +44,46 @@
 	</div>
 </form>
 <div id="progress_wrapper">
+	<h2>Files</h2>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Filename</th>
+				<th>Status</th>
+			</tr>
+		</thead>
+		<tbody id="filelist">
+		</tbody>
+	</table>
 	<h2>Progress</h2>
+	<div id="progressbar_wrapper">
+	</div>
 </div>
 
 <script>
 $("#progress_wrapper").hide();
-$("input").change(function() {
+$(":file").change(function() {
 	$("#progress_wrapper").show();
 	$("form").hide();
 	var formdata = new FormData($("form")[0]);
-	var value = $("input").val().split("\\");
-	value = value[value.length -1];
+
+	var files = [];
+	$("#progressbar_wrapper").html("");
+	for(var i = 0; i < this.files.length; i++) {
+		var file = this.files[i];
+		var name = file.name;
+		var row = $('<tr><td>' + name + '</td></tr>').append().appendTo("#filelist");
+		var symbol = $('<td><span class="glyphicon glyphicon-upload" aria-hidden="true"></span></td>');
+		symbol.appendTo(row);
+		files[name] = {
+			symbol: symbol,
+			row : row
+		};
+
+	}
+
 	var progress = {};
-	progress.outer = $('<div class="progress"></div>').appendTo("#progress_wrapper");
+	progress.outer = $('<div class="progress"></div>').appendTo("#progressbar_wrapper");
 	progress.inner = $('<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">').appendTo(progress.outer);
 
 	function updateProgress(e) {
@@ -81,9 +108,19 @@ $("input").change(function() {
 		processData: false,
 		contentType : false,
 		success : function(json) {
-			$("#progress_wrapper").hide();
+			var data = JSON.parse(json);
+			for(var key in data) {
+				var file = data[key];
+				var elem = files[key];
+				elem.symbol.remove();
+				if(file.okay) {
+					elem.symbol = $('<td><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>').appendTo(elem.row);
+				}
+				else {
+					elem.symbol = $('<td><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>').appendTo(elem.row);
+				}
+			}
 			$("form").show();
-			progress.outer.remove();
 		}
 	});
 });
