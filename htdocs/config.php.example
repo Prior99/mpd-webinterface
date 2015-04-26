@@ -1,0 +1,5 @@
+<?php
+	$config = array();
+	$config["port"] = 7701;
+	$config["host"] = "localhost";
+?>

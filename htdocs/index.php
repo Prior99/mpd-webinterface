@@ -1,3 +1,10 @@
+<?php
+	ini_set("display_errors", 1);
+	ini_set("track_errors", 1);
+	ini_set("html_errors", 1);
+	error_reporting(E_ALL);
+	require_once("./mpd.php");
+?>
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -37,6 +44,10 @@
 			<div class="starter-template">
 				<h1>Mumble Music Bot</h1>
 				<p class="lead">This is a music bot for mumble.</p>
+				<?php
+					$mpd = new MPD();
+					$mpd->status();
+				?>
 			</div>
 		</div>
 	</body>
