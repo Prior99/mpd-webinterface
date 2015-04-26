@@ -33,6 +33,7 @@ function reloadSongs() {
 	$("#songs").html("");
 	$.getJSON("api.php?action=songs", function(songs) {
 		$.getJSON("api.php?action=playlist", function(playlist) {
+			songs.sort();
 			for(var i in songs) {
 				(function(song) {
 					var add = $('<a class="btn btn-xs btn-success">Add</a>').click(function() {
