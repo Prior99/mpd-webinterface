@@ -1,0 +1,23 @@
+{
+  "name": "mumble-music-bot",
+  "version": "0.0.0",
+  "authors": [
+    "Frederick Gnodtke <frederick@gnodtke.net>"
+  ],
+  "description": "A music bot for mumble.",
+  "main": "index.php",
+  "keywords": [
+    "mumble"
+  ],
+  "license": "GPL",
+  "homepage": "https://git.cronosx.de/prior/mumble-music-bot",
+  "private": true,
+  "ignore": [
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.4",
+    "jquery": "~2.1.3"
+  }
+}
