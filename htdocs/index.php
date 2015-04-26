@@ -3,7 +3,6 @@
 	ini_set("track_errors", 1);
 	ini_set("html_errors", 1);
 	error_reporting(E_ALL);
-	require_once("./mpd.php");
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -48,14 +47,14 @@
 				<?php
 					switch($_GET["action"]) {
 						case "songs":
-							require_once("./songs.php");
+							require_once("view/songs.php");
 							break;
 						case "playlist":
-							require_once("./playlist.php");
+							require_once("view/playlist.php");
 							break;
 						case "home":
 						default:
-							require_once("./home.php");
+							require_once("view/home.php");
 							break;
 					}
 				?>

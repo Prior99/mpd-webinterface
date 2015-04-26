@@ -1,5 +1,5 @@
 <?php
-	require_once("./mpd.php");
+	require_once("src/mpd.php");
 	$mpd = new MPD();
 	switch($_GET["action"]) {
 		case "playlist":
