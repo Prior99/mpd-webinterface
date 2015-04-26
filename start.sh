@@ -22,6 +22,7 @@ rvm use @music >> "$LOGFILE" 2>&1
 function start_mpd {
 	echo "Starting music player daemon MPD ..."
         mpd "$MPD_CONF"
+	mpc -p $MPD_PORT consume on
         echo "Done! PID " $(cat "$MPD_PIDFILE")
 }
 
