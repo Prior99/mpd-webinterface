@@ -21,10 +21,33 @@
 			print_r($this->send("status"));
 		}
 
+		public function listall() {
+			$result = $this->send("listall");
+			$result = str_replace("file: ", "", $result);
+			$array = explode("\n", $result);
+			$result = array();
+			for($i = 0; $i < count($array) - 2; $i++) {
+				$result[] = $array[$i];
+			}
+			return $result;
+		}
+
+		public function playlist() {
+			$result = $this->send("playlist");
+			$array = explode("\n", $result);
+			$result = array();
+			foreach($array as $entry) {
+				if(preg_match('/(\d+):\s*file:\s*(.*)/', $entry, $matches) === 1) {
+					$result[$matches[1]] = $matches[2];
+				}
+			}
+			return $result;
+		}
+
 		private function send($string) {
 			$string = $string."\n";
 			socket_write($this->socket, $string, strlen($string));
-			return socket_read($this->socket, 2048);
+			return socket_read($this->socket, 32000);
 		}
 
 		public function __destruct() {

@@ -35,6 +35,9 @@
 				</div>
 				<div id="navbar" class="collapse navbar-collapse">
 					<ul class="nav navbar-nav">
+						<li><a href="?action=home">Home</a></li>
+						<li><a href="?action=songs">Songs</a></li>
+						<li><a href="?action=playlist">Playlist</a></li>
 					</ul>
 				</div>
 			</div>
@@ -42,11 +45,19 @@
 
 		<div class="container">
 			<div class="starter-template">
-				<h1>Mumble Music Bot</h1>
-				<p class="lead">This is a music bot for mumble.</p>
 				<?php
-					$mpd = new MPD();
-					$mpd->status();
+					switch($_GET["action"]) {
+						case "songs":
+							require_once("./songs.php");
+							break;
+						case "playlist":
+							require_once("./playlist.php");
+							break;
+						case "home":
+						default:
+							require_once("./home.php");
+							break;
+					}
 				?>
 			</div>
 		</div>
