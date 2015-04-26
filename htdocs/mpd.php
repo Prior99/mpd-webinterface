@@ -32,6 +32,19 @@
 			return $result;
 		}
 
+		public function add($name) {
+			$result = $this->send("add \"$name\"");
+			$result = trim($result);
+			if($result === "OK") {
+				$result = $this->send("play");
+				$result = trim($result);
+				return $result === "OK";
+			}
+			else {
+				return false;
+			}
+		}
+
 		public function playlist() {
 			$result = $this->send("playlist");
 			$array = explode("\n", $result);
