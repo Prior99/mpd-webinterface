@@ -15,8 +15,29 @@
 		<script src="bower_components/jquery/dist/jquery.min.js"></script>
 		<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 		<style>
+			html {
+				position: relative;
+				min-height: 100%;
+			}
 			body {
 				padding-top: 70px;
+				margin-bottom: 60px;
+			}
+			.footer {
+				position: absolute;
+				bottom: 0;
+				width: 100%;
+				height: 60px;
+				background-color: #f5f5f5;
+			}
+			.footer .container {
+				width: auto;
+				max-width: 680px;
+				padding: 0 15px;
+			}
+			.footer .container .text-muted {
+				margin: 20px 0;
+				text-align: center;
 			}
 		</style>
 	</head>
@@ -62,6 +83,11 @@
 							break;
 					}
 				?>
+			</div>
+		</div>
+		<div class="footer">
+			<div class="container">
+				<p class="text-muted">2015 by Prior (Frederick Gnodtke). This software is open source and can be found <a href="https://git.cronosx.de/prior/mumble-music-bot/">here</a>.</p>
 			</div>
 		</div>
 	</body>
