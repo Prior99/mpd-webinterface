@@ -1,6 +1,1 @@
-*
-!start.sh
-!htdocs/
-!.gitignore
-!README.md
-!LICENSE
+config.php
