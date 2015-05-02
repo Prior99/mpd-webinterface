@@ -37,7 +37,7 @@
 					getid3_lib::CopyTagsToComments($id3);
 					$tag = $id3["comments"];
 					if(isset($tag) && isset($tag["artist"][0]) && isset($tag["title"][0])) {
-						$filename = $tag["artist"][0]." - ".$tag["title"][0].pathinfo($name, PATHINFO_EXTENSION);
+						$filename = $tag["artist"][0]." - ".$tag["title"][0].".".pathinfo($name, PATHINFO_EXTENSION);
 						move_uploaded_file($tmp_name, $GLOBALS["config"]["music"]."/".$filename);
 						$result[$name] = array("okay" => true);
 					}
