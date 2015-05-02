@@ -6,12 +6,12 @@
 	 * it under the terms of the GNU General Public License as published by
 	 * the Free Software Foundation, either version 3 of the License, or
 	 * (at your option) any later version.
-	 * 
+	 *
 	 * mumble-music-bot is distributed in the hope that it will be useful,
 	 * but WITHOUT ANY WARRANTY; without even the implied warranty of
 	 * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	 * GNU General Public License for more details.
-	 * 
+	 *
 	 * You should have received a copy of the GNU General Public License
 	 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	 */
@@ -37,7 +37,7 @@
 					getid3_lib::CopyTagsToComments($id3);
 					$tag = $id3["comments"];
 					if(isset($tag) && isset($tag["artist"][0]) && isset($tag["title"][0])) {
-						$filename = $tag["artist"][0]." - ".$tag["title"][0].substr($name, -4);
+						$filename = $tag["artist"][0]." - ".$tag["title"][0].pathinfo($name, PATHINFO_EXTENSION);
 						move_uploaded_file($tmp_name, $GLOBALS["config"]["music"]."/".$filename);
 						$result[$name] = array("okay" => true);
 					}
